@@ -1,106 +1,240 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>NIYOGISUBIZO Christian AI</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #222;
+      background: linear-gradient(135deg, #f4f7ff, #ffffff);
+      color: #172033;
     }
 
     header {
-      background: #123b70;
+      background: #183b8c;
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 28px 15px;
+    }
+
+    header .cross {
+      font-size: 42px;
+    }
+
+    header h1 {
+      margin: 8px 0;
+      font-size: 28px;
+    }
+
+    header p {
+      margin: 5px 0;
+      opacity: 0.9;
     }
 
     .container {
-      max-width: 700px;
+      width: 92%;
+      max-width: 850px;
       margin: 30px auto;
-      padding: 20px;
     }
 
     .card {
       background: white;
-      padding: 25px;
       border-radius: 18px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 25px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
     }
 
     textarea {
       width: 100%;
-      height: 130px;
-      padding: 12px;
-      box-sizing: border-box;
-      border: 1px solid #ccc;
+      min-height: 130px;
+      padding: 15px;
+      border: 2px solid #d8deeb;
       border-radius: 12px;
       font-size: 16px;
       resize: vertical;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #183b8c;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 15px;
     }
 
     button {
-      margin-top: 15px;
-      width: 100%;
-      padding: 14px;
       border: none;
-      border-radius: 12px;
-      background: #123b70;
-      color: white;
-      font-size: 17px;
+      border-radius: 10px;
+      padding: 13px 20px;
+      font-size: 15px;
       cursor: pointer;
+      background: #183b8c;
+      color: white;
     }
 
-    #answer {
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .clear {
+      background: #777;
+    }
+
+    .answer {
+      margin-top: 25px;
+      background: #f4f7ff;
+      border-left: 5px solid #183b8c;
+      border-radius: 10px;
+      padding: 18px;
+      min-height: 80px;
+      white-space: pre-wrap;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
       margin-top: 20px;
-      padding: 15px;
-      background: #eef3f9;
+    }
+
+    .feature {
+      padding: 18px;
+      background: #f8f9fc;
       border-radius: 12px;
-      min-height: 50px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 23px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+
+      button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>✝️ NIYOGISUBIZO Christian AI</h1>
-  <p>Study • Ask • Translate • Learn</p>
-</header>
+  <header>
+    <div class="cross">✝️</div>
+    <h1>NIYOGISUBIZO Christian AI</h1>
+    <p>Study • Ask • Translate • Learn</p>
+  </header>
 
-<div class="container">
-  <div class="card">
-    <h2>Welcome to NIYOGISUBIZO Christian AI</h2>
+  <main class="container">
 
-    <textarea id="question"
-      placeholder="Ask your question here..."></textarea>
+    <section class="card">
 
-    <button onclick="answerQuestion()">Ask NIYOGISUBIZO AI</button>
+      <h2>Ask NIYOGISUBIZO AI 🤖</h2>
 
-    <div id="answer">
-      Your answer will appear here.
-    </div>
-  </div>
-</div>
+      <textarea
+        id="question"
+        placeholder="Ask a question...&#10;&#10;Example: Explain photosynthesis."
+      ></textarea>
 
-<script>
-function answerQuestion() {
-  const question = document.getElementById("question").value.trim();
-  const answer = document.getElementById("answer");
+      <div class="buttons">
+        <button onclick="askAI()">Ask NIYOGISUBIZO AI</button>
+        <button class="clear" onclick="clearChat()">Clear</button>
+      </div>
 
-  if (!question) {
-    answer.innerHTML = "Please enter a question.";
-    return;
-  }
+      <div id="answer" class="answer">
+        Your answer will appear here.
+      </div>
 
-  answer.innerHTML =
-    "Thank you for your question. NIYOGISUBIZO Christian AI is being prepared to give intelligent answers. 🤖✝️";
-}
-</script>
+      <div class="features">
+        <div class="feature">
+          📚<br>
+          <strong>Study</strong>
+        </div>
+
+        <div class="feature">
+          ❓<br>
+          <strong>Questions</strong>
+        </div>
+
+        <div class="feature">
+          🌍<br>
+          <strong>Translation</strong>
+        </div>
+
+        <div class="feature">
+          📝<br>
+          <strong>Notes</strong>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 NIYOGISUBIZO Christian AI
+  </footer>
+
+
+  <script>
+
+    function askAI() {
+
+      const question = document.getElementById("question").value.trim();
+      const answer = document.getElementById("answer");
+
+      if (!question) {
+        answer.textContent = "Please type your question first.";
+        return;
+      }
+
+      answer.textContent =
+        "Your question was received! 🤖\n\n" +
+        "NIYOGISUBIZO AI is being connected to its AI brain. " +
+        "The next step is to connect this website to a secure AI backend.";
+
+    }
+
+
+    function clearChat() {
+
+      document.getElementById("question").value = "";
+
+      document.getElementById("answer").textContent =
+        "Your answer will appear here.";
+
+    }
+
+  </script>
 
 </body>
 </html>
+```
